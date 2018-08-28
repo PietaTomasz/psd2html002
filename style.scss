@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+$tlocolor: #112c4f;
+
+
+* {
+  box-sizing: border-box;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body, html {
+  background-color: $tlocolor;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+header {
+  background-image: url("./img/zdjecie\ tlo.png");
+}
