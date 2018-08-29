@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800,900");
-header, header .menu, header .more, section.one, section.one .faces, section.one .faces .box, section.one .faces .box .face, section.two .skewed .content, section.three, section.three .button {
+header, header .menu, header .more, section.one, section.one .faces, section.one .faces .box, section.one .faces .box .face, section.two .content, section.three, section.three .button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13,15 +13,16 @@ header, header .menu, header .more, section.one, section.one .faces, section.one
 
 header .more, section.one .button, section.three .button {
   width: 323px;
-  max-width: 80vw;
+  max-width: 70vw;
   height: 98px;
   background-color: #a90000;
   border-radius: 1rem;
   border: 1px solid white;
-  padding: 1rem 2.5rem;
+  padding: 1rem 1.8rem;
   font-weight: 900;
   text-transform: uppercase;
   cursor: pointer;
+  margin: 1rem;
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -47,6 +48,7 @@ body, html {
   font-family: 'Montserrat', sans-serif;
   color: white;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 .scroll {
@@ -66,8 +68,7 @@ header {
   background-image: url("./img/wolnosc.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center;
-  background-size: auto;
+  background-position: center center;
   width: 100%;
   min-height: 100vh;
   -webkit-box-orient: vertical;
@@ -81,6 +82,7 @@ header {
 header * {
   margin: 0rem;
   padding: 1rem;
+  max-width: 90vw;
 }
 
 header .menu {
@@ -163,6 +165,10 @@ section.one {
       justify-content: space-around;
 }
 
+section.one * {
+  max-width: 90vw;
+}
+
 section.one .title .head {
   font-size: 2.3rem;
   font-weight: 800;
@@ -171,6 +177,7 @@ section.one .title .head {
 
 section.one .title .opis {
   max-width: 750px;
+  margin: 1rem;
 }
 
 section.one .faces {
@@ -240,23 +247,41 @@ section.one .button:hover {
 }
 
 section.two {
-  min-height: 100vh;
-}
-
-section.two .skewed {
   background: #3c597f;
-  margin: 200px 0;
 }
 
-section.two .skewed .content {
+section.two .triangleup {
+  width: 0;
+  height: 0;
+  position: relative;
+  border-style: solid;
+  border-width: 200px 100vw 0 0;
+  border-color: #112c4f transparent transparent transparent;
+  z-index: 1;
+}
+
+section.two .triangledown {
+  position: relative;
+  left: 0px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 100px 100vw;
+  border-color: transparent transparent #112c4f transparent;
+  z-index: 3;
+}
+
+section.two .content {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  z-index: 1;
+  position: relative;
 }
 
-@media only screen and (max-width: 800px) {
-  section.two .skewed .content {
+@media only screen and (max-width: 1200px) {
+  section.two .content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -264,40 +289,41 @@ section.two .skewed .content {
   }
 }
 
-section.two .skewed .content .left {
-  width: 80vw;
+section.two .content .left {
+  width: 100vw;
 }
 
-section.two .skewed .content .left img {
+section.two .content .left img {
   width: 100%;
-  max-width: 100vh;
+  z-index: 2;
 }
 
-section.two .skewed .content .right {
+section.two .content .right {
   margin: 0 3rem;
+  padding: 3rem 0;
 }
 
-section.two .skewed .content .right .name {
+section.two .content .right .name {
   font-size: 3rem;
   font-weight: 800;
 }
 
-section.two .skewed .content .right .sub {
+section.two .content .right .sub {
   font-size: 1.6rem;
 }
 
-section.two .skewed .content .right .sub .bold {
+section.two .content .right .sub .bold {
   font-weight: 800;
 }
 
-section.two .skewed .content .right .text {
-  margin-top: -3rem;
+section.two .content .right .text {
+  margin-top: -9rem;
   font-size: 1.6em;
   max-width: 2000px;
   z-index: 2;
 }
 
-section.two .skewed .content .right .text:before {
+section.two .content .right .text:before {
   content: open-quote;
   position: relative;
   top: 140px;
@@ -308,7 +334,10 @@ section.two .skewed .content .right .text:before {
 }
 
 section.three {
-  max-width: 1000px;
+  background-image: url("./img/Logotlo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
   min-height: 100vh;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -321,6 +350,11 @@ section.three {
 
 section.three::before {
   background: white url("./img/logos.png");
+}
+
+section.three .one, section.three .two {
+  max-width: 1130px;
+  margin: 0 1rem;
 }
 
 section.three .one .title, section.three .two .title {
@@ -362,6 +396,10 @@ footer {
   border-bottom: 2px solid white;
   margin-top: 3rem;
   margin-bottom: 3rem;
+}
+
+footer * {
+  max-width: 90vw;
 }
 
 footer .blue {
@@ -415,16 +453,35 @@ footer .adresy .adres {
 
 footer .adresy .adres > div {
   text-align: left;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 700px) {
+  footer .adresy .adres > div {
+    text-align: center;
+  }
+}
+
+footer .bottomline div {
+  margin-top: 1rem;
 }
 
 footer .bottomline .social {
   -ms-flex-item-align: start;
       align-self: flex-start;
-  margin-bottom: 2rem;
 }
 
 footer .bottomline .copy {
   -ms-flex-item-align: end;
       align-self: flex-end;
+  line-height: 4;
+}
+
+footer .bottomline .follow {
+  line-height: 4;
+}
+
+footer .bottomline .logo {
+  line-height: 3;
 }
 /*# sourceMappingURL=style.css.map */

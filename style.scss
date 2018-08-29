@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800,900');
-// @import "compass/css3";
 
 $tlocolor: #112c4f;
 $red: #a90000;
@@ -13,15 +12,16 @@ $blue: #3c597f;
 
 %button {  
   width: 323px;
-  max-width: 80vw;
+  max-width: 70vw;
   height: 98px;
   background-color: $red;
   border-radius: 1rem;
   border: 1px solid white;
-  padding: 1rem 2.5rem;
+  padding: 1rem 1.8rem;
   font-weight: 900;
   text-transform: uppercase;
   cursor: pointer;
+  margin: 1rem;
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -29,14 +29,13 @@ a:link, a:visited, a:hover, a:active {
   color: white;
 }
 
-
 * {
   box-sizing: border-box;
   margin: 0 auto;
   text-align: center;
   // border: 1px solid #000;
   transition: all 0.1s;
-  user-select: none;  
+  user-select: none;
 }
 
 body, html {
@@ -44,7 +43,8 @@ body, html {
   font-family: 'Montserrat', sans-serif;
   color: white;
   font-size: 16px;
-  // overflow-x: hidden;
+  overflow-x: hidden;
+
 }
 
 .scroll {
@@ -64,9 +64,8 @@ header {
   background-image: url("./img/wolnosc.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center;
-  background-size: auto;
-  width: 100%;
+  background-position: center center;
+  width: 100%;  
   min-height: 100vh;
   @extend %center;
   flex-direction: column;
@@ -75,6 +74,7 @@ header {
   * {
     margin: 0rem;
     padding: 1rem;
+    max-width: 90vw;
   }
 
   .menu {
@@ -150,6 +150,10 @@ section.one {
   flex-direction: column;
   justify-content: space-around;
 
+  * {
+    max-width: 90vw;
+  }
+
   .title {
     .head {
       font-size: 2.3rem;
@@ -158,6 +162,7 @@ section.one {
     }
     .opis {
       max-width: 750px;
+      margin: 1rem;
     }
   }
 
@@ -222,68 +227,91 @@ section.one {
 }
 
 section.two {
-  min-height: 100vh;
+  background: #3c597f;
+  
 
-  .skewed {
-    // @include transform(skew(0deg, -10deg));
-    background: #3c597f;
-    margin: 200px 0; 
+  .triangleup {
+    width: 0;
+    height: 0;
+    position: relative;
+    border-style: solid;
+    border-width: 200px 100vw 0 0;
+    border-color: $tlocolor transparent transparent transparent;
+    z-index: 1;
+  }
 
-    .content {
-      // @include transform(skew(0deg, 10deg));
-      @extend %center;
-      flex-direction: row;
+  .triangledown {
+    position: relative;
+    left: 0px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 100px 100vw;
+    border-color: transparent transparent $tlocolor transparent;
+    z-index: 3;
+  }
 
-      @media only screen and (max-width: 800px) {
-        flex-direction: column;
+  .content {
+    @extend %center;
+    flex-direction: row;
+    z-index: 1;
+    position: relative;
+
+    @media only screen and (max-width: 1200px) {
+      flex-direction: column;
+    }
+
+    .left {
+      width: 100vw;
+
+      img {
+        width: 100%;
+        z-index: 2;
       }
+    }
 
-      .left {
-        width: 80vw;
-
-        img {
-          width: 100%;
-          max-width: 100vh;
-        }
+    .right {
+      margin: 0 3rem;
+      padding: 3rem 0;
+      
+      .name {
+        font-size: 3rem;
+        font-weight: 800;
       }
-
-      .right {
-        margin: 0 3rem;
-
-        
-        .name {
-          font-size: 3rem;
+      .sub {
+        font-size: 1.6rem;
+        .bold {
           font-weight: 800;
         }
-        .sub {
-          font-size: 1.6rem;
-          .bold {
-            font-weight: 800;
-          }
-        }
-        .text {
-          margin-top: -3rem;
-          font-size: 1.6em;
-          max-width: 2000px;
-          z-index: 2;
-          
-          &:before {
-            content: open-quote;
-            position: relative;
-            top: 140px;
-            left: 0px;
-            font-size: 16rem;
-            color: $tlocolor;
-            font-weight: 800;
-          }
+      }
+      .text {
+        margin-top: -9rem;
+        font-size: 1.6em;
+        max-width: 2000px;
+        z-index: 2;
+        
+        &:before {
+          content: open-quote;
+          position: relative;
+          top: 140px;
+          left: 0px;
+          font-size: 16rem;
+          color: $tlocolor;
+          font-weight: 800;
         }
       }
     }
   }
+  
 }
 section.three {
   
-  max-width: 1000px;
+  background-image: url("./img/Logotlo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  
+  
   min-height: 100vh;
   @extend %center;
   flex-direction: column;
@@ -294,6 +322,9 @@ section.three {
     background: white url('./img/logos.png');
   }
   .one, .two {
+    max-width: 1130px;
+    margin: 0 1rem;
+
     .title {
       font-size: 3rem;
       font-weight: 800;
@@ -329,6 +360,10 @@ footer {
   margin-top: 3rem;
   margin-bottom: 3rem;
   
+  * {
+    max-width: 90vw;
+  }
+
   .blue {
     color: $blue;
     align-self: flex-start;
@@ -359,17 +394,31 @@ footer {
     }
     .adres > div {
       text-align: left;
+      margin-bottom: 1rem;
+
+      @media only screen and (max-width: 700px) {
+        text-align: center;
+      }
     }
   }
 
   .bottomline {
+    div {
+      margin-top: 1rem;
+    }
 
     .social {
       align-self: flex-start;
-      margin-bottom: 2rem;
     }
     .copy {
       align-self: flex-end;
+      line-height: 4;
+    }
+    .follow {
+      line-height: 4;
+    }
+    .logo {
+      line-height: 3;
     }
   }
 }
