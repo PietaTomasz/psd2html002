@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800,900");
-header, header .menu, header .more, section.one, section.one .faces, section.one .faces .box, section.one .faces .box .face, section.three {
+header, header .menu, header .more, section.one, section.one .faces, section.one .faces .box, section.one .faces .box .face, section.two .skewed .content, section.three, section.three .button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,8 +11,9 @@ header, header .menu, header .more, section.one, section.one .faces, section.one
           justify-content: center;
 }
 
-header .more, section.one .button {
+header .more, section.one .button, section.three .button {
   width: 323px;
+  max-width: 80vw;
   height: 98px;
   background-color: #a90000;
   border-radius: 1rem;
@@ -33,7 +34,6 @@ a:link, a:visited, a:hover, a:active {
           box-sizing: border-box;
   margin: 0 auto;
   text-align: center;
-  border: 1px solid #000;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
   -webkit-user-select: none;
@@ -47,23 +47,60 @@ body, html {
   font-family: 'Montserrat', sans-serif;
   color: white;
   font-size: 16px;
-  overflow-x: hidden;
+}
+
+.scroll {
+  border: 1px solid #959595;
+  width: 50px;
+  height: 80px;
+  border-radius: 1rem;
+}
+
+.scroll:after {
+  content: url("./img/scroll2.png");
+  position: relative;
+  top: 30px;
 }
 
 header {
+  background-image: url("./img/wolnosc.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: auto;
   width: 100%;
+  min-height: 100vh;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 header * {
-  margin: 1.5rem;
+  margin: 0rem;
+  padding: 1rem;
 }
 
 header .menu {
   text-transform: uppercase;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 400px) {
+  header .menu {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  header .menu .link:nth-of-type(4) {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
 }
 
 header .menu div:hover {
@@ -105,6 +142,7 @@ header .title img {
 
 header .more {
   text-transform: uppercase;
+  margin: 2rem 0;
 }
 
 header .more:hover {
@@ -113,21 +151,10 @@ header .more:hover {
   border: 2px solid #a90000;
 }
 
-header .scroll {
-  border: 1px solid #959595;
-  width: 50px;
-  height: 80px;
-  border-radius: 1rem;
-}
-
-header .scroll:after {
-  content: url("./img/scroll2.png");
-  position: relative;
-  top: 30px;
-}
-
 section.one {
   width: 100%;
+  min-height: 100vh;
+  padding: 5rem 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -139,6 +166,7 @@ section.one {
 section.one .title .head {
   font-size: 2.3rem;
   font-weight: 800;
+  max-width: 90vw;
 }
 
 section.one .title .opis {
@@ -211,10 +239,13 @@ section.one .button:hover {
   border: 1px solid white;
 }
 
+section.two {
+  min-height: 100vh;
+}
+
 section.two .skewed {
   background: #3c597f;
-  padding: 200px 0;
-  margin-top: -200px;
+  margin: 200px 0;
 }
 
 section.two .skewed .content {
@@ -222,14 +253,63 @@ section.two .skewed .content {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+}
+
+@media only screen and (max-width: 800px) {
+  section.two .skewed .content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+section.two .skewed .content .left {
+  width: 80vw;
+}
+
+section.two .skewed .content .left img {
+  width: 100%;
+  max-width: 100vh;
+}
+
+section.two .skewed .content .right {
+  margin: 0 3rem;
+}
+
+section.two .skewed .content .right .name {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+section.two .skewed .content .right .sub {
+  font-size: 1.6rem;
+}
+
+section.two .skewed .content .right .sub .bold {
+  font-weight: 800;
+}
+
+section.two .skewed .content .right .text {
+  margin-top: -3rem;
+  font-size: 1.6em;
+  max-width: 2000px;
+  z-index: 2;
+}
+
+section.two .skewed .content .right .text:before {
+  content: open-quote;
+  position: relative;
+  top: 140px;
+  left: 0px;
+  font-size: 16rem;
+  color: #112c4f;
+  font-weight: 800;
 }
 
 section.three {
-  background: white url("./img/logos.png");
   max-width: 1000px;
+  min-height: 100vh;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -237,5 +317,114 @@ section.three {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   width: 100%;
+}
+
+section.three::before {
+  background: white url("./img/logos.png");
+}
+
+section.three .one .title, section.three .two .title {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+section.three .one .title .red, section.three .two .title .red {
+  color: #a90000;
+}
+
+section.three .one .cont, section.three .two .cont {
+  font-size: 1.1em;
+  padding: 1rem;
+}
+
+section.three .button {
+  background-color: #3c597f;
+}
+
+section.three .button:hover {
+  background-color: white;
+  color: #3c597f;
+  border: 1px solid white;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  min-height: 30vh;
+  max-width: 1200px;
+  border-bottom: 2px solid white;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+footer .blue {
+  color: #3c597f;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+}
+
+footer .blue, footer .adresy, footer .bottomline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+@media only screen and (max-width: 700px) {
+  footer .blue, footer .adresy, footer .bottomline {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+footer .adresy {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+footer .adresy .adres {
+  width: 300px;
+  margin-bottom: 1rem;
+}
+
+footer .adresy .adres > div {
+  text-align: left;
+}
+
+footer .bottomline .social {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-bottom: 2rem;
+}
+
+footer .bottomline .copy {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 /*# sourceMappingURL=style.css.map */
